@@ -7,8 +7,6 @@ dotenv.config();
 
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
-
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 function standardDeviation(values) {
@@ -68,7 +66,7 @@ const r1 = readline.createInterface({
 r1.question("Ask a question.   ", async (question) => {
   const [gptAnswer, geminiAnswer, claudeAnswer] = await Promise.all([
     openaiSDK(OPENAI_API_KEY, 'gpt-4o-mini', question),
-    openaiSDK(ANTHROPIC_API_KEY, 'claude-3-haiku', question),
+    openaiSDK(OPENAI_API_KEY, 'claude-3-haiku', question),
     googleSDK(GEMINI_API_KEY, 'gemini-3.6-flash', question),
   ]);
 
@@ -125,7 +123,7 @@ r1.question("Ask a question.   ", async (question) => {
 
   const [gptEval, claudeEval, geminiEval] = await Promise.all([
     openaiSDK(OPENAI_API_KEY, 'gpt-4o-mini', judgeInput ,INDIVIDUAL_JUDGE),
-    openaiSDK(ANTHROPIC_API_KEY, 'claude-3-haiku', judgeInput, INDIVIDUAL_JUDGE),
+    openaiSDK(OPENAI_API_KEY, 'claude-3-haiku', judgeInput, INDIVIDUAL_JUDGE),
     googleSDK(GEMINI_API_KEY, 'gemini-3.6-flash', judgeInput, INDIVIDUAL_JUDGE),
   ]);
 
