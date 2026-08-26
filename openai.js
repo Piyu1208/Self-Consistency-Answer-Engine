@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 
 
-async function openaiSDK(apiKey, model, input) {
+async function openaiSDK(apiKey, model, input, instructions) {
 
     const client = new OpenAI({
         baseURL: `https://aicredits.in/v1`,
@@ -10,6 +10,7 @@ async function openaiSDK(apiKey, model, input) {
 
     const response = await client.responses.create({
         model: `${model}`,
+        instructions: instructions || '',
         input: `${input}`,
     });
 
